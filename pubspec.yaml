@@ -1,7 +1,7 @@
 name: dotted_line
 description: This package allows you to draw dotted lines with Flutter.
 version: 1.0.0
-author: umechanhika
+homepage: https://github.com/umechanhika/dotted_line
 repository: https://github.com/umechanhika/dotted_line
 
 environment:
