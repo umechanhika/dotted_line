@@ -6,15 +6,16 @@ on:
       - master
 
 jobs:
-  build:
+  prepare:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+      - name: Check head ref
+        if: startsWith(github.head_ref, 'release') == false
+        run: |
+          echo head ref is not a release branch.
+          exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v1
