@@ -3,7 +3,10 @@ name: Pre-release check
 on:
   pull_request:
     branches:
-      - master
+      - provisional-master
+    paths:
+      - pubspec.yaml
+      - CHANGELOG.md
 
 jobs:
   check:
