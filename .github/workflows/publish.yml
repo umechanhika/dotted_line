@@ -4,6 +4,9 @@ on:
   push:
     branches: 
       - master
+    paths:
+      - pubspec.yaml
+      - CHANGELOG.md
 
 jobs:
   publish:
