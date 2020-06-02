@@ -28,13 +28,14 @@ class DottedLine extends StatelessWidget {
     return Container(
       width: direction == Axis.horizontal ? lineLength : lineThickness,
       height: direction == Axis.vertical ? lineLength : lineThickness,
-      child: ListView.builder(
+      child: MediaQuery.removePadding(
+          context: context, removeTop: true, child: ListView.builder(
         itemBuilder: (_, index) {
           return index % 2 == 0 ? _buildDash() : _buildDashGap();
         },
         scrollDirection: direction,
         physics: NeverScrollableScrollPhysics(),
-      ),
+      )),
     );
   }
 
