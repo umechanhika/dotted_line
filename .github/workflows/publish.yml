@@ -2,8 +2,8 @@ name: Publish package to pub.dev
 
 on:
   push:
-    branches: 
-      - master
+    tags:
+      - 'v*'
     paths:
       - pubspec.yaml
       - CHANGELOG.md
@@ -34,3 +34,11 @@ jobs:
       - name: Publish
         run: |
           pub publish -f
+
+      - name: Create release
+          uses: actions/create-release@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            tag_name: ${{ github.ref }}
+            release_name: ${{ github.ref }}
