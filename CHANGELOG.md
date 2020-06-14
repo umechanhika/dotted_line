@@ -1,3 +1,8 @@
+## 1.0.3
+
+* Change the sample code.
+* Enabled build the sample code on the web.
+
 ## 1.0.2
 
 * Remove top padding.
