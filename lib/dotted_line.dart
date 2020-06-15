@@ -10,7 +10,9 @@ class DottedLine extends StatelessWidget {
     this.dashLength = 4.0,
     this.dashColor = Colors.black,
     this.dashGapLength = 4.0,
-    this.dashGapColor = Colors.white,
+    this.dashGapColor = Colors.transparent,
+    this.dashRadius = 0.0,
+    this.dashGapRadius = 0.0,
   });
 
   final Axis direction;
@@ -19,9 +21,11 @@ class DottedLine extends StatelessWidget {
 
   final double dashLength;
   final Color dashColor;
+  final double dashRadius;
 
   final double dashGapLength;
   final Color dashGapColor;
+  final double dashGapRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -43,17 +47,23 @@ class DottedLine extends StatelessWidget {
 
   Widget _buildDash() {
     return Container(
+      decoration: BoxDecoration(
+        color: dashColor,
+        borderRadius: BorderRadius.circular(dashRadius),
+      ),
       width: direction == Axis.horizontal ? dashLength : lineThickness,
       height: direction == Axis.vertical ? dashLength : lineThickness,
-      color: dashColor,
     );
   }
 
   Widget _buildDashGap() {
     return Container(
+      decoration: BoxDecoration(
+        color: dashGapColor,
+        borderRadius: BorderRadius.circular(dashGapRadius),
+      ),
       width: direction == Axis.horizontal ? dashGapLength : lineThickness,
       height: direction == Axis.vertical ? dashGapLength : lineThickness,
-      color: dashGapColor,
     );
   }
 }

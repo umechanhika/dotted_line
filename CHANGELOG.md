@@ -1,3 +1,9 @@
+## 1.1.0
+
+* Add `dashRadius` and `dashGapRadius` parameters.
+* Change the default dash gap color from `Colors.white` to `Colors.transparent`.
+* Change `README.md` and the sample code.
+
 ## 1.0.3
 
 * Change the sample code.
