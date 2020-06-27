@@ -35,7 +35,7 @@ class _MyHomePageState extends State<_MyHomePage> {
             DottedLine(),
             space,
             Text("Dash length changed"),
-            DottedLine(dashLength: 30),
+            DottedLine(dashLength: 40),
             space,
             Text("Dash gap length changed"),
             DottedLine(dashLength: 30, dashGapLength: 30),
