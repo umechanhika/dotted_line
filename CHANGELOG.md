@@ -1,3 +1,9 @@
+## 2.0.0
+
+* Fixed a performance issue when displaying in ListView
+
+From this version, this library is no longer dependent on ListView.
+
 ## 1.1.0
 
 * Add `dashRadius` and `dashGapRadius` parameters.
