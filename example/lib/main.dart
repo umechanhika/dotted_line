@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: _TITLE,
       theme: ThemeData(primarySwatch: Colors.blue),
       home: _MyHomePage(),
@@ -35,7 +36,7 @@ class _MyHomePageState extends State<_MyHomePage> {
             DottedLine(),
             space,
             Text("Dash length changed"),
-            DottedLine(dashLength: 30),
+            DottedLine(dashLength: 40),
             space,
             Text("Dash gap length changed"),
             DottedLine(dashLength: 30, dashGapLength: 30),
