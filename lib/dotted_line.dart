@@ -30,15 +30,16 @@ class DottedLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget dash = _buildDash();
-    final Widget dashGap = _buildDashGap();
+    final bool isHorizontal = direction == Axis.horizontal;
+    final Widget dash = _buildDash(isHorizontal);
+    final Widget dashGap = _buildDashGap(isHorizontal);
 
     return SizedBox(
-      width: direction == Axis.horizontal ? lineLength : lineThickness,
-      height: direction == Axis.horizontal ? lineThickness : lineLength,
+      width: isHorizontal ? lineLength : lineThickness,
+      height: isHorizontal ? lineThickness : lineLength,
       child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
-        final double lineLength = _getLineLength(constraints);
+        final double lineLength = _getLineLength(constraints, isHorizontal);
         final int dashAndDashGapCount =
             _calculateDashAndDashGapCount(lineLength);
 
@@ -53,11 +54,9 @@ class DottedLine extends StatelessWidget {
   }
 
   /// If [lineLength] is [double.infinity], get the maximum value of the parent widget. And if the value is specified, use the specified value.
-  double _getLineLength(BoxConstraints constraints) {
+  double _getLineLength(BoxConstraints constraints, bool isHorizontal) {
     return this.lineLength == double.infinity
-        ? direction == Axis.horizontal
-            ? constraints.maxWidth
-            : constraints.maxHeight
+        ? isHorizontal ? constraints.maxWidth : constraints.maxHeight
         : this.lineLength;
   }
 
@@ -78,25 +77,25 @@ class DottedLine extends StatelessWidget {
     return dashAndDashGapCount.toInt();
   }
 
-  Widget _buildDash() {
+  Widget _buildDash(bool isHorizontal) {
     return Container(
       decoration: BoxDecoration(
         color: dashColor,
         borderRadius: BorderRadius.circular(dashRadius),
       ),
-      width: direction == Axis.horizontal ? dashLength : lineThickness,
-      height: direction == Axis.horizontal ? lineThickness : dashLength,
+      width: isHorizontal ? dashLength : lineThickness,
+      height: isHorizontal ? lineThickness : dashLength,
     );
   }
 
-  Widget _buildDashGap() {
+  Widget _buildDashGap(bool isHorizontal) {
     return Container(
       decoration: BoxDecoration(
         color: dashGapColor,
         borderRadius: BorderRadius.circular(dashGapRadius),
       ),
-      width: direction == Axis.horizontal ? dashGapLength : lineThickness,
-      height: direction == Axis.horizontal ? lineThickness : dashGapLength,
+      width: isHorizontal ? dashGapLength : lineThickness,
+      height: isHorizontal ? lineThickness : dashGapLength,
     );
   }
 }
