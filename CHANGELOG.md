@@ -1,3 +1,8 @@
+## 2.0.1
+
+* Add the API documents.
+* Add analysis_options.yaml.
+
 ## 2.0.0
 
 * Fixed a performance issue when displaying in ListView
