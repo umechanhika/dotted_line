@@ -2,7 +2,22 @@ library dotted_line;
 
 import 'package:flutter/material.dart';
 
+/// Draw a dotted line.
+///
+/// Basic line settings
+/// * [direction]
+/// * [lineLength]
+/// * [lineThickness]
+/// Dash settings
+/// * [dashLength]
+/// * [dashColor]
+/// * [dashRadius]
+/// Dash gap settings
+/// * [dashGapLength]
+/// * [dashGapColor]
+/// * [dashGapRadius]
 class DottedLine extends StatelessWidget {
+  /// Creates dotted line with the given parameters
   const DottedLine({
     Key key,
     this.direction = Axis.horizontal,
@@ -16,32 +31,45 @@ class DottedLine extends StatelessWidget {
     this.dashGapRadius = 0.0,
   }) : super(key: key);
 
+  /// The direction of the entire dotted line. Default [Axis.horizontal].
   final Axis direction;
+
+  /// The length of the entire dotted line. Default [double.infinity].
   final double lineLength;
+
+  /// The thickness of the entire dotted line. Default (1.0).
   final double lineThickness;
 
+  /// The length of the dash. Default (4.0).
   final double dashLength;
+
+  /// The color of the dash. Default [Colors.black].
   final Color dashColor;
+
+  /// The radius of the dash. Default (0.0).
   final double dashRadius;
 
+  /// The length of the dash gap. Default (4.0).
   final double dashGapLength;
+
+  /// The color of the dash gap. Default [Colors.transparent].
   final Color dashGapColor;
+
+  /// The radius of the dash gap. Default (0.0).
   final double dashGapRadius;
 
   @override
   Widget build(BuildContext context) {
-    final bool isHorizontal = direction == Axis.horizontal;
-    final Widget dash = _buildDash(isHorizontal);
-    final Widget dashGap = _buildDashGap(isHorizontal);
+    final isHorizontal = direction == Axis.horizontal;
+    final dash = _buildDash(isHorizontal);
+    final dashGap = _buildDashGap(isHorizontal);
 
     return SizedBox(
       width: isHorizontal ? lineLength : lineThickness,
       height: isHorizontal ? lineThickness : lineLength,
-      child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-        final double lineLength = _getLineLength(constraints, isHorizontal);
-        final int dashAndDashGapCount =
-            _calculateDashAndDashGapCount(lineLength);
+      child: LayoutBuilder(builder: (context, constraints) {
+        final lineLength = _getLineLength(constraints, isHorizontal);
+        final dashAndDashGapCount = _calculateDashAndDashGapCount(lineLength);
 
         return Wrap(
           direction: direction,
@@ -53,11 +81,13 @@ class DottedLine extends StatelessWidget {
     );
   }
 
-  /// If [lineLength] is [double.infinity], get the maximum value of the parent widget. And if the value is specified, use the specified value.
+  /// If [lineLength] is [double.infinity],
+  /// get the maximum value of the parent widget.
+  /// And if the value is specified, use the specified value.
   double _getLineLength(BoxConstraints constraints, bool isHorizontal) {
-    return this.lineLength == double.infinity
+    return lineLength == double.infinity
         ? isHorizontal ? constraints.maxWidth : constraints.maxHeight
-        : this.lineLength;
+        : lineLength;
   }
 
   /// Calculate the count of (dash + dashGap).
@@ -67,8 +97,8 @@ class DottedLine extends StatelessWidget {
   /// example2) [lineLength] is 10, [dashLength] is 1, [dashGapLength] is 2.
   /// "-  -  -  -"
   int _calculateDashAndDashGapCount(double lineLength) {
-    final double dashAndDashGapLength = dashLength + dashGapLength;
-    double dashAndDashGapCount = lineLength / dashAndDashGapLength * 2;
+    final dashAndDashGapLength = dashLength + dashGapLength;
+    var dashAndDashGapCount = lineLength / dashAndDashGapLength * 2;
 
     if (dashLength <= lineLength % dashAndDashGapLength) {
       dashAndDashGapCount += 1;
