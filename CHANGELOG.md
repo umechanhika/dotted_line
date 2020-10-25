@@ -1,3 +1,7 @@
+## 2.0.2
+
+* Reformatted dotted_line.dart.
+
 ## 2.0.1
 
 * Add the API documents.

@@ -86,7 +86,9 @@ class DottedLine extends StatelessWidget {
   /// And if the value is specified, use the specified value.
   double _getLineLength(BoxConstraints constraints, bool isHorizontal) {
     return lineLength == double.infinity
-        ? isHorizontal ? constraints.maxWidth : constraints.maxHeight
+        ? isHorizontal
+            ? constraints.maxWidth
+            : constraints.maxHeight
         : lineLength;
   }
 
