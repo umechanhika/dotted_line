@@ -19,7 +19,7 @@ import 'package:flutter/material.dart';
 class DottedLine extends StatelessWidget {
   /// Creates dotted line with the given parameters
   const DottedLine({
-    Key key,
+    Key? key,
     this.direction = Axis.horizontal,
     this.lineLength = double.infinity,
     this.lineThickness = 1.0,
