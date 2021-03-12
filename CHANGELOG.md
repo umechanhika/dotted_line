@@ -1,3 +1,10 @@
+## 3.0.0
+
+* Migrate to null safety.
+* Upgrade pre 1.12 Android projects.
+
+Thanks to @hlavki @amitkot @YoshihideSogawa @MarcinusX for this release!
+
 ## 2.0.2
 
 * Reformatted dotted_line.dart.
