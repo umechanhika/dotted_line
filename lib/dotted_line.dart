@@ -101,11 +101,6 @@ class DottedLine extends StatelessWidget {
   int _calculateDashAndDashGapCount(double lineLength) {
     final dashAndDashGapLength = dashLength + dashGapLength;
     var dashAndDashGapCount = lineLength / dashAndDashGapLength * 2;
-
-    if (dashLength <= lineLength % dashAndDashGapLength) {
-      dashAndDashGapCount += 1;
-    }
-
     return dashAndDashGapCount.toInt();
   }
 
