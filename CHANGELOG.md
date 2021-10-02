@@ -1,3 +1,8 @@
+## 3.0.1
+
+* Fix Issue
+  * https://github.com/umechanhika/dotted_line/issues/33
+
 ## 3.0.0
 
 * Migrate to null safety.
