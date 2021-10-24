@@ -56,10 +56,14 @@ class DottedLine extends StatelessWidget {
   final double dashLength;
 
   /// The color of the dash. Default [Colors.black].
+  ///
+  /// This is ignored if [dashGradient] is non-null.
   final Color dashColor;
 
   /// The gradient colors of the dash. Default null.
   /// The first color is beginning color, the second one is ending color.
+  ///
+  /// If this is specified, [dashColor] has no effect.
   final List<Color>? dashGradient;
 
   /// The radius of the dash. Default (0.0).
@@ -69,10 +73,14 @@ class DottedLine extends StatelessWidget {
   final double dashGapLength;
 
   /// The color of the dash gap. Default [Colors.transparent].
+  ///
+  /// This is ignored if [dashGapGradient] is non-null.
   final Color dashGapColor;
 
   /// The gradient colors of the dash gap. Default null.
   /// The first color is beginning color, the second one is ending color.
+  ///
+  /// If this is specified, [dashGapColor] has no effect.
   final List<Color>? dashGapGradient;
 
   /// The radius of the dash gap. Default (0.0).
