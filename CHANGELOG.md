@@ -1,3 +1,10 @@
+## 3.1.0
+
+* Add `dashGradient` and `dashGapGradient` parameters.
+  * https://github.com/umechanhika/dotted_line/issues/36
+
+Thanks to @thibaultrousset for this release!
+
 ## 3.0.1
 
 * Fix Issue
