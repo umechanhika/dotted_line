@@ -22,9 +22,10 @@ jobs:
           {
             "accessToken":"${{ secrets.CREDENTIALS_ACCESS_TOKEN }}",
             "refreshToken":"${{ secrets.CREDENTIALS_REFRESH_TOKEN }}",
+            "idToken":"${{ secrets.CREDENTIALS_ID_TOKEN }}",
             "tokenEndpoint":"https://accounts.google.com/o/oauth2/token",
             "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
-            "expiration": 1576508276459
+            "expiration": 1633183030444
           }
           EOF
 
