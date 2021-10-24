@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 /// * [dashGapLength]
 /// * [dashGapColor]
 /// * [dashGapRadius]
+/// * [dashGapGradient]
 class DottedLine extends StatelessWidget {
   /// Creates dotted line with the given parameters
   const DottedLine({
@@ -29,11 +30,16 @@ class DottedLine extends StatelessWidget {
     this.dashGradient,
     this.dashGapLength = 4.0,
     this.dashGapColor = Colors.transparent,
+    this.dashGapGradient,
     this.dashRadius = 0.0,
     this.dashGapRadius = 0.0,
   })  : assert(
             dashGradient == null || dashGradient.length == 2,
             'The dashGradient must have only two colors.\n'
+            'The beginning color and the ending color of the gradient.'),
+        assert(
+            dashGapGradient == null || dashGapGradient.length == 2,
+            'The dashGapGradient must have only two colors.\n'
             'The beginning color and the ending color of the gradient.'),
         super(key: key);
 
@@ -65,13 +71,16 @@ class DottedLine extends StatelessWidget {
   /// The color of the dash gap. Default [Colors.transparent].
   final Color dashGapColor;
 
+  /// The gradient colors of the dash gap. Default null.
+  /// The first color is beginning color, the second one is ending color.
+  final List<Color>? dashGapGradient;
+
   /// The radius of the dash gap. Default (0.0).
   final double dashGapRadius;
 
   @override
   Widget build(BuildContext context) {
     final isHorizontal = direction == Axis.horizontal;
-    final dashGap = _buildDashGap(isHorizontal);
 
     return SizedBox(
       width: isHorizontal ? lineLength : lineThickness,
@@ -90,6 +99,8 @@ class DottedLine extends StatelessWidget {
               final dash = _buildDash(isHorizontal, dashColor);
               return dash;
             } else {
+              final dashGapColor = _getDashGapColor(dashGapCount, index ~/ 2);
+              final dashGap = _buildDashGap(isHorizontal, dashGapColor);
               return dashGap;
             }
           }).toList(growable: false),
@@ -139,13 +150,18 @@ class DottedLine extends StatelessWidget {
   Color _getDashColor(int maxDashCount, int index) {
     return dashGradient == null
         ? dashColor
-        : _calculateGradientColor(maxDashCount, index);
+        : _calculateGradientColor(
+            dashGradient![0],
+            dashGradient![1],
+            maxDashCount,
+            index,
+          );
   }
 
-  Widget _buildDashGap(bool isHorizontal) {
+  Widget _buildDashGap(bool isHorizontal, Color color) {
     return Container(
       decoration: BoxDecoration(
-        color: dashGapColor,
+        color: color,
         borderRadius: BorderRadius.circular(dashGapRadius),
       ),
       width: isHorizontal ? dashGapLength : lineThickness,
@@ -153,13 +169,23 @@ class DottedLine extends StatelessWidget {
     );
   }
 
+  Color _getDashGapColor(int maxDashGapCount, int index) {
+    return dashGapGradient == null
+        ? dashGapColor
+        : _calculateGradientColor(
+            dashGapGradient![0],
+            dashGapGradient![1],
+            maxDashGapCount,
+            index,
+          );
+  }
+
   Color _calculateGradientColor(
+    Color startColor,
+    Color endColor,
     int maxItemCount,
     int index,
   ) {
-    var startColor = dashGradient![0];
-    var endColor = dashGradient![1];
-
     var diffAlpha = (endColor.alpha - startColor.alpha);
     var diffRed = (endColor.red - startColor.red);
     var diffGreen = (endColor.green - startColor.green);
