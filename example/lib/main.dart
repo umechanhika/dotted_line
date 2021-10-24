@@ -75,6 +75,17 @@ class _MyHomePageState extends State<_MyHomePage> {
               direction: Axis.vertical,
               lineLength: 150,
             ),
+            space,
+            Text("Dash gradient changed"),
+            DottedLine(
+              dashGradient: [
+                Colors.red,
+                Colors.blue,
+              ],
+              lineThickness: 50,
+              dashLength: 10,
+            ),
+            space,
           ],
         ),
       ),
