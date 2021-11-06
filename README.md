@@ -1,5 +1,7 @@
 ![logo.png](https://github.com/umechanhika/dotted_line/blob/master/image/github-social-preview.png "logo.png")
 
+---
+
 # About
 
 This package allows you to draw dotted lines with Flutter.
