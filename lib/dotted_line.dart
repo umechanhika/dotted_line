@@ -95,13 +95,24 @@ class DottedLine extends StatelessWidget {
       height: isHorizontal ? lineThickness : lineLength,
       child: LayoutBuilder(builder: (context, constraints) {
         final lineLength = _getLineLength(constraints, isHorizontal);
+        if (dashGapLength == 0) {
+          return Container(
+            decoration: BoxDecoration(
+              color: dashColor,
+              borderRadius: BorderRadius.circular(dashRadius),
+            ),
+            width: lineLength,
+            height: isHorizontal ? lineThickness : dashLength,
+          );
+        }
         final dashAndDashGapCount = _calculateDashAndDashGapCount(lineLength);
         final dashCount = dashAndDashGapCount[0];
         final dashGapCount = dashAndDashGapCount[1];
-
-        return Wrap(
-          direction: direction,
-          children: List.generate(dashCount + dashGapCount, (index) {
+        return ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: direction,
+          itemCount: dashCount + dashGapCount,
+          itemBuilder: (context, index) {
             if (index % 2 == 0) {
               final dashColor = _getDashColor(dashCount, index ~/ 2);
               final dash = _buildDash(isHorizontal, dashColor);
@@ -111,7 +122,7 @@ class DottedLine extends StatelessWidget {
               final dashGap = _buildDashGap(isHorizontal, dashGapColor);
               return dashGap;
             }
-          }).toList(growable: false),
+          },
         );
       }),
     );
