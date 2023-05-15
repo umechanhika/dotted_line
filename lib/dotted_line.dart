@@ -33,6 +33,7 @@ class DottedLine extends StatelessWidget {
     this.dashGapGradient,
     this.dashRadius = 0.0,
     this.dashGapRadius = 0.0,
+    this.alignment = WrapAlignment.center,
   })  : assert(
             dashGradient == null || dashGradient.length == 2,
             'The dashGradient must have only two colors.\n'
@@ -45,6 +46,9 @@ class DottedLine extends StatelessWidget {
 
   /// The direction of the entire dotted line. Default [Axis.horizontal].
   final Axis direction;
+
+  /// The alignment of the entire dotted line. Default [WrapAlignment.center].
+  final WrapAlignment alignment;
 
   /// The length of the entire dotted line. Default [double.infinity].
   final double lineLength;
@@ -101,6 +105,7 @@ class DottedLine extends StatelessWidget {
 
         return Wrap(
           direction: direction,
+          alignment: alignment,
           children: List.generate(dashCount + dashGapCount, (index) {
             if (index % 2 == 0) {
               final dashColor = _getDashColor(dashCount, index ~/ 2);
