@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 ///
 /// Basic line settings
 /// * [direction]
+/// * [alignment]
 /// * [lineLength]
 /// * [lineThickness]
 /// Dash settings
@@ -23,6 +24,7 @@ class DottedLine extends StatelessWidget {
   const DottedLine({
     Key? key,
     this.direction = Axis.horizontal,
+    this.alignment = WrapAlignment.center,
     this.lineLength = double.infinity,
     this.lineThickness = 1.0,
     this.dashLength = 4.0,
@@ -33,7 +35,6 @@ class DottedLine extends StatelessWidget {
     this.dashGapGradient,
     this.dashRadius = 0.0,
     this.dashGapRadius = 0.0,
-    this.alignment = WrapAlignment.center,
   })  : assert(
             dashGradient == null || dashGradient.length == 2,
             'The dashGradient must have only two colors.\n'

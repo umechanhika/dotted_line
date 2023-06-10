@@ -10,19 +10,20 @@ This package allows you to draw dotted lines with Flutter.
 
 # Usage
 
-| Parameter           | Default            | Description                              |
-| ------------------- | :----------------: | ---------------------------------------: |
-| **direction**       | Axis.horizontal    | The direction of the entire dotted line. |
-| **lineLength**      | double.infinity    | The length of the entire dotted line.    |
-| **lineThickness**   | 1.0                | The thickness of the entire dotted line. |
-| **dashLength**      | 4.0                | The length of the dash.                  |
-| **dashColor**       | Colors.black       | The color of the dash.                   |
-| **dashGradient**    | null               | The gradient colors of the dash.         |
-| **dashRadius**      | 0.0                | The radius of the dash.                  |
-| **dashGapLength**   | 4.0                | The length of the dash gap.              |
-| **dashGapColor**    | Colors.transparent | The color of the dash gap.               |
-| **dashGapGradient** | null               | The gradient colors of the dash gap.     |
-| **dashGapRadius**   | 0.0                | The radius of the dash gap.              |
+| Parameter           |       Default        |                              Description |
+|---------------------|:--------------------:|-----------------------------------------:|
+| **direction**       |   Axis.horizontal    | The direction of the entire dotted line. |
+| **alignment**       | WrapAlignment.center | The alignment of the entire dotted line. |
+| **lineLength**      |   double.infinity    |    The length of the entire dotted line. |
+| **lineThickness**   |         1.0          | The thickness of the entire dotted line. |
+| **dashLength**      |         4.0          |                  The length of the dash. |
+| **dashColor**       |     Colors.black     |                   The color of the dash. |
+| **dashGradient**    |         null         |         The gradient colors of the dash. |
+| **dashRadius**      |         0.0          |                  The radius of the dash. |
+| **dashGapLength**   |         4.0          |              The length of the dash gap. |
+| **dashGapColor**    |  Colors.transparent  |               The color of the dash gap. |
+| **dashGapGradient** |         null         |     The gradient colors of the dash gap. |
+| **dashGapRadius**   |         0.0          |              The radius of the dash gap. |
 
 This can be used without parameters.
 
@@ -39,6 +40,7 @@ import 'package:dotted_line/dotted_line.dart';
 
 DottedLine(
   direction: Axis.horizontal,
+  alignment: WrapAlignment.center
   lineLength: double.infinity,
   lineThickness: 1.0,
   dashLength: 4.0,
