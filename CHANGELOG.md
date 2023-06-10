@@ -1,3 +1,11 @@
+## 3.2.0
+
+* Add `alignment` parameter.
+  * https://github.com/umechanhika/dotted_line/pull/52
+  * https://github.com/umechanhika/dotted_line/issues/25
+
+Thanks to @filipe-varela @armandsLa for this release!
+
 ## 3.1.0
 
 * Add `dashGradient` and `dashGapGradient` parameters.
