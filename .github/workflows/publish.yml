@@ -1,42 +1,10 @@
-name: Publish package to pub.dev
+name: Publish to pub.dev
 
 on:
   push:
     tags:
-      - 'v*'
+    - 'v[0-9]+.[0-9]+.[0-9]+*'
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
-    container:
-      image:  google/dart:latest
-  
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Setup credentials
-        run: | 
-          mkdir -p ~/.pub-cache 
-          cat <<EOF > ~/.pub-cache/credentials.json
-          {
-            "accessToken":"${{ secrets.CREDENTIALS_ACCESS_TOKEN }}",
-            "refreshToken":"${{ secrets.CREDENTIALS_REFRESH_TOKEN }}",
-            "idToken":"${{ secrets.CREDENTIALS_ID_TOKEN }}",
-            "tokenEndpoint":"https://accounts.google.com/o/oauth2/token",
-            "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
-            "expiration": 1633183030444
-          }
-          EOF
-
-      - name: Publish
-        run: |
-          pub publish -f
-
-      - name: Create release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
