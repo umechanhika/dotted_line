@@ -12,8 +12,6 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   effective_dart: ^1.2.0
 
 # For information on the generic Dart part of this file, see the
