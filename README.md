@@ -40,7 +40,7 @@ import 'package:dotted_line/dotted_line.dart';
 
 DottedLine(
   direction: Axis.horizontal,
-  alignment: WrapAlignment.center
+  alignment: WrapAlignment.center,
   lineLength: double.infinity,
   lineThickness: 1.0,
   dashLength: 4.0,
