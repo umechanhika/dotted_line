@@ -1,3 +1,10 @@
+## 3.2.1
+
+* Modify README.md.
+  * https://github.com/umechanhika/dotted_line/pull/54
+
+Thanks to @mmustafasesudia for this release!
+
 ## 3.2.0
 
 * Add `alignment` parameter.
