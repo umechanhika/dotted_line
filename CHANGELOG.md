@@ -1,3 +1,7 @@
+## 3.2.2
+
+* Modify example/pubspec.yaml.
+
 ## 3.2.1
 
 * Modify README.md.
