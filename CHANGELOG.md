@@ -1,3 +1,8 @@
+## 3.2.3
+
+* Modify .github/workflows/check.yml, Gemfile & Gemfile.lock.
+
+
 ## 3.2.2
 
 * Modify example/pubspec.yaml.
