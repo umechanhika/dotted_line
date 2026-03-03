@@ -24,6 +24,7 @@ This package allows you to draw dotted lines with Flutter.
 | **dashGapColor**    |  Colors.transparent  |               The color of the dash gap. |
 | **dashGapGradient** |         null         |     The gradient colors of the dash gap. |
 | **dashGapRadius**   |         0.0          |              The radius of the dash gap. |
+| **addRepaintBoundary**|       false        | Whether to wrap the dotted line with a RepaintBoundary. |
 
 This can be used without parameters.
 
@@ -51,8 +52,16 @@ DottedLine(
   dashGapColor: Colors.transparent,
   dashGapGradient: [Colors.red, Colors.blue],
   dashGapRadius: 0.0,
+  addRepaintBoundary: true,
 )
 ```
+
+# Performance Optimization
+If your DottedLine is placed inside a widget that rebuilds frequently, you might experience performance issues (dropped frames) because the dashes and gaps are constantly repainted.
+
+In such cases, setting addRepaintBoundary: true can improve performance by wrapping the DottedLine in a RepaintBoundary, isolating its paint step.
+
+Note: The default is false to prevent unexpected memory overhead. Keep it false if you are displaying hundreds of dotted lines (e.g., in a large list) to avoid excessive memory usage.
 
 # Example
 The sample code can be found under the `example` package.
