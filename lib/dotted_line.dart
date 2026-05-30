@@ -19,6 +19,8 @@ import 'package:flutter/material.dart';
 /// * [dashGapColor]
 /// * [dashGapRadius]
 /// * [dashGapGradient]
+/// performance settings
+/// * [addRepaintBoundary]
 class DottedLine extends StatelessWidget {
   /// Creates dotted line with the given parameters
   const DottedLine({
@@ -35,6 +37,7 @@ class DottedLine extends StatelessWidget {
     this.dashGapGradient,
     this.dashRadius = 0.0,
     this.dashGapRadius = 0.0,
+    this.addRepaintBoundary = false,
   })  : assert(
             dashGradient == null || dashGradient.length == 2,
             'The dashGradient must have only two colors.\n'
@@ -91,11 +94,14 @@ class DottedLine extends StatelessWidget {
   /// The radius of the dash gap. Default (0.0).
   final double dashGapRadius;
 
+  /// Whether to add [RepaintBoundary] to the entire dotted line. Default false.
+  final bool addRepaintBoundary;
+
   @override
   Widget build(BuildContext context) {
     final isHorizontal = direction == Axis.horizontal;
 
-    return SizedBox(
+    Widget content = SizedBox(
       width: isHorizontal ? lineLength : lineThickness,
       height: isHorizontal ? lineThickness : lineLength,
       child: LayoutBuilder(builder: (context, constraints) {
@@ -121,6 +127,10 @@ class DottedLine extends StatelessWidget {
         );
       }),
     );
+    if (addRepaintBoundary) {
+      content = RepaintBoundary(child: content);
+    }
+    return content;
   }
 
   /// If [lineLength] is [double.infinity],
