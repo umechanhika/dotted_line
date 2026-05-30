@@ -1,0 +1,4 @@
+# Files tracked in git but not part of the published Dart package.
+# (They are matched by .gitignore, which pub warns about otherwise.)
+/Gemfile.lock
+/example/pubspec.lock

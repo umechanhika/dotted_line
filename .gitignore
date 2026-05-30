@@ -1,6 +1,11 @@
 # Miscellaneous
 *.class
 *.lock
+# These lock files are intentionally checked in; un-ignore them so they are
+# not flagged as "checked-in but gitignored" when publishing to pub.dev.
+# They are excluded from the published package via .pubignore instead.
+!Gemfile.lock
+!/example/pubspec.lock
 *.log
 *.pyc
 *.swp
