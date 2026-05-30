@@ -1,3 +1,14 @@
+## 3.3.0
+
+* Add `addRepaintBoundary` parameter to optionally wrap the dotted line with a `RepaintBoundary` for paint isolation. Default is `false`.
+  * https://github.com/umechanhika/dotted_line/pull/62
+  * https://github.com/umechanhika/dotted_line/issues/61
+* Widen the Dart SDK constraint to `>=2.12.0 <4.0.0` to support Dart 3.
+* Replace the deprecated per-channel `Color` API in gradient calculation with `Color.lerp` to fix static analysis warnings.
+* Fix the `ruby-version` setting in the Pre-release check workflow.
+
+Thanks to @mem-5514-tahara for this release!
+
 ## 3.2.3
 
 * Modify .github/workflows/check.yml, Gemfile & Gemfile.lock.
