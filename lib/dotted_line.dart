@@ -210,20 +210,8 @@ class DottedLine extends StatelessWidget {
     int maxItemCount,
     int index,
   ) {
-    var diffAlpha = (endColor.alpha - startColor.alpha);
-    var diffRed = (endColor.red - startColor.red);
-    var diffGreen = (endColor.green - startColor.green);
-    var diffBlue = (endColor.blue - startColor.blue);
-
-    var amountOfChangeInAlphaPerItem = diffAlpha ~/ maxItemCount;
-    var amountOfChangeInRedPerItem = diffRed ~/ maxItemCount;
-    var amountOfChangeInGreenPerItem = diffGreen ~/ maxItemCount;
-    var amountOfChangeInBluePerItem = diffBlue ~/ maxItemCount;
-
-    return startColor
-        .withAlpha(startColor.alpha + amountOfChangeInAlphaPerItem * index)
-        .withRed(startColor.red + amountOfChangeInRedPerItem * index)
-        .withGreen(startColor.green + amountOfChangeInGreenPerItem * index)
-        .withBlue(startColor.blue + amountOfChangeInBluePerItem * index);
+    if (maxItemCount <= 0) return startColor;
+    final t = index / maxItemCount;
+    return Color.lerp(startColor, endColor, t) ?? startColor;
   }
 }
