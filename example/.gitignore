@@ -1,6 +1,9 @@
 # Miscellaneous
 *.class
 *.lock
+# pubspec.lock is intentionally checked in for this example app; un-ignore it
+# so it is not flagged when publishing the parent package to pub.dev.
+!pubspec.lock
 *.log
 *.pyc
 *.swp
